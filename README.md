@@ -87,7 +87,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 - A `model` respeita o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
 - As propriedades podem estar em `camelCase` se `underscored` for `true`. Ou seja, quando os dados forem inseridos ou selecionados via `model` devem estar em `camelCase`, mas quando as _queries_ forem pra o banco os campos das colunas devem estar em `snake_case`.
-- A `model` foir desenvolvida em formato funcional.
+- A `model` foi desenvolvida em formato funcional.
 
 ---
 
@@ -229,7 +229,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 - O endpoint é capaz de trazer todos `users` do banco de dados;
 
 <details>
-  <summary><strongValidações para este endpoint:</strong></summary>
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
 
@@ -253,16 +253,14 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 6 - Sua aplicação deve ter o endpoint GET `/user/:id`
+## 6 - A aplicação possui o endpoint GET `/user/:id`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/user/:id`;
-- O endpoint deve ser capaz de trazer o `user` baseado no `id` do banco de dados se ele existir;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/user/:id`;
+- O endpoint é capaz de trazer o `user` baseado no `id` do banco de dados se ele existir;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que é possível listar um usuário específico com sucesso]**
     - Ao listar um usuário com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
@@ -288,40 +286,18 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 7 - Crie o modelo `Category` em `src/models/Category.js` com as propriedades corretas
+## 7 - O modelo `Category` em `src/models/Category.js` possui:
 
-- Sua `model` deve estar no diretório correto e respeitar a nomenclatura pedida no requisito;
-- Sua `model` deve respeitar o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
-- Sua `model` deve ser desenvolvida em formato funcional, ou seja, não pode ser uma classe.
-
-<details>
-<summary><strong>Se você usa MacOS</strong></summary>
-  
-  Esse requisito pode dar um falso positivo! Garanta que o nome do arquivo está em `PascalCase`. O avaliador, que roda em Linux, é case-sensitive para arquivos, enquanto o MacOS, entre outros sistemas, são case-insensitive. Ou seja: na sua máquina pode rodar, e no avaliador não, então fique de olho! Caso queria se aprofundar nesse assunto, veja o seguinte [link](https://books.google.com.br/books?id=FZcQAwAAQBAJ&pg=PA14&lpg=PA14&dq=node+case+sensitive+different+operating+system&source=bl&ots=PaRv2bqgWT&sig=ACfU3U3ZC8ymhOKAXs0ERdX4FTfTBlc-IQ&hl=pt-BR&sa=X&ved=2ahUKEwiZiqK51oj6AhWXArkGHUSKDWUQ6AF6BAgrEAM#v=onepage&q=node%20case%20sensitive%20different%20operating%20system&f=false). 
-</details>
-
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * **[Será validado que existe o arquivo 'Category.js']**
-
-  * **[Será validado que o modelo possui o nome 'Category']**
-
-  * **[Será validado que o modelo possui a propriedade 'id']**
-
-  * **[Será validado que o modelo possui a propriedade 'name']**
-
-<br />
-</details>
+- A `model` respeita o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
+- A `model` foi desenvolvida em formato funcional.
 
 ---
 
-## 8 - Sua aplicação deve ter o endpoint POST `/categories`
+## 8 - A aplicação possui o endpoint POST `/categories`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/categories`;
-- O endpoint deve ser capaz de adicionar uma nova categoria a sua tabela no banco de dados;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/categories`;
+- O endpoint é capaz de adicionar uma nova categoria à tabela no banco de dados;
 - O corpo da requisição deverá seguir o formato abaixo:
   ```json
   {
@@ -330,9 +306,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
   ```
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:s</strong></summary>
 
   * **[Será validado que não é possível cadastrar uma categoria sem o campo `name`]**
     - Se a requisição não tiver o campo `name` devidamente preenchidos(não pode haver campo em branco), o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
@@ -356,16 +330,14 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 9 - Sua aplicação deve ter o endpoint GET `/categories`
+## 9 - A aplicação possui o endpoint GET `/categories`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/categories`;
-- O endpoint deve ser capaz de trazer todas categorias do banco de dados;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/categories`;
+- O endpoint é capaz de trazer todas categorias do banco de dados;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que é possível listar todas as categoria com sucesso]**
     - Ao listar categorias com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
@@ -389,90 +361,29 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 10 - Crie o modelo `BlogPost` em `src/models/BlogPost.js` com as propriedades e associações corretas
+## 10 - A modelo `BlogPost` em `src/models/BlogPost.js` possui:
 
-- Sua `model` deve estar no diretório correto e respeitar a nomenclatura pedida no requisito;
-- Sua `model` deve respeitar o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
-- Sua `model` deve respeitar a associação correta *(N:1)* com o modelo `User`;
+- A `model` respeita o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
+- A `model` respeita a associação correta *(N:1)* com o modelo `User`;
 - As propriedades podem estar em `camelCase` se `underscored` for `true`. Ou seja, quando os dados forem inseridos ou selecionados via `model` devem estar em `camelCase`, mas quando as _queries_ forem pra o banco os campos das colunas devem estar em `snake_case`.
-- Sua `model` deve ser desenvolvida em formato funcional, ou seja, não pode ser uma classe.
-
-- **✨ Dica:**
-  - Explore como renomear campos no Sequelize;
-
-<details>
-<summary><strong>Se você usa MacOS</strong></summary>
-  
-  Esse requisito pode dar um falso positivo! Garanta que o nome do arquivo está em `PascalCase`. O avaliador, que roda em Linux, é case-sensitive para arquivos, enquanto o MacOS, entre outros sistemas, são case-insensitive. Ou seja: na sua máquina pode rodar, e no avaliador não, então fique de olho! Caso queria se aprofundar nesse assunto, veja o seguinte [link](https://books.google.com.br/books?id=FZcQAwAAQBAJ&pg=PA14&lpg=PA14&dq=node+case+sensitive+different+operating+system&source=bl&ots=PaRv2bqgWT&sig=ACfU3U3ZC8ymhOKAXs0ERdX4FTfTBlc-IQ&hl=pt-BR&sa=X&ved=2ahUKEwiZiqK51oj6AhWXArkGHUSKDWUQ6AF6BAgrEAM#v=onepage&q=node%20case%20sensitive%20different%20operating%20system&f=false). 
-</details>
-
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * **[Será validado que existe o arquivo 'BlogPost.js']**
-
-  * **[Será validado que o modelo possui o nome 'BlogPost']**
-
-  * **[Será validado que o modelo possui a propriedade 'id']**
-
-  * **[Será validado que o modelo possui a propriedade 'title']**
-
-  * **[Será validado que o modelo possui a propriedade 'content']**
-
-  * **[Será validado que o modelo possui a propriedade 'user_id']**
-
-  * **[Será validado que o modelo possui a propriedade 'published']**
-
-  * **[Será validado que o modelo possui a propriedade 'updated']**
-
-  * **[Será validado que o modelo em 'BlogPost.js', define a associação 'belongsTo', com a entidade de nome 'User']**
-
-  * **[Será validado que o modelo em 'User.js', define a associação 'hasMany', com a entidade de nome 'BlogPost']**
-
-<br />
-</details>
+- A `model` foi desenvolvida em formato funcional.
 
 ---
 
-## 11 - Crie o modelo `PostCategory` em `src/models/PostCategory.js` com as propriedades e associações corretas
+## 11 - Ao modelo `PostCategory` em `src/models/PostCategory.js` possui:
 
-- Sua `model` deve estar no diretório correto e respeitar a nomenclatura pedida no requisito;
-- Sua `model` deve respeitar o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
-- Sua `model` deve respeitar a associação correta *(N:N)* entre o modelo `BlogPost` e o modelo `Category`;
+- A `model` respeita o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
+- A `model` respeita a associação correta *(N:N)* entre o modelo `BlogPost` e o modelo `Category`;
 - As propriedades podem estar em `camelCase` se `underscored` for `true`. Ou seja, quando os dados forem inseridos ou selecionados via `model` devem estar em `camelCase`, mas quando as _queries_ forem pra o banco os campos das colunas devem estar em `snake_case`.
-- Sua `model` deve ser desenvolvida em formato funcional, ou seja, não pode ser uma classe.
-
-<details>
-<summary><strong>Se você usa MacOS</strong></summary>
-  
-  Esse requisito pode dar um falso positivo! Garanta que o nome do arquivo está em `PascalCase`. O avaliador, que roda em Linux, é case-sensitive para arquivos, enquanto o MacOS, entre outros sistemas, são case-insensitive. Ou seja: na sua máquina pode rodar, e no avaliador não, então fique de olho! Caso queria se aprofundar nesse assunto, veja o seguinte [link](https://books.google.com.br/books?id=FZcQAwAAQBAJ&pg=PA14&lpg=PA14&dq=node+case+sensitive+different+operating+system&source=bl&ots=PaRv2bqgWT&sig=ACfU3U3ZC8ymhOKAXs0ERdX4FTfTBlc-IQ&hl=pt-BR&sa=X&ved=2ahUKEwiZiqK51oj6AhWXArkGHUSKDWUQ6AF6BAgrEAM#v=onepage&q=node%20case%20sensitive%20different%20operating%20system&f=false). 
-</details>
-
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * **[Será validado que existe o arquivo 'PostCategory.js']**
-
-  * **[Será validado que o modelo possui o nome 'PostCategory']**
-
-  * **[Será validado que o modelo possui a propriedade 'post_id']**
-
-  * **[Será validado que o modelo possui a propriedade 'category_id']**
-
-  * **[Será validado que o modelo em 'PostCategory.js', através do(s) modelos(s) de nome(s) 'Category; BlogPost', define a associação 'belongsToMany' respectivamente, com o(s) modelo(s) de nome(s) 'BlogPost, Category']**
-
-<br />
-</details>
+- A `model` foi desenvolvida em formato funcional.
 
 ---
 
-## 12 - Sua aplicação deve ter o endpoint POST `/post`
+## 12 - A aplicação possui o endpoint POST `/post`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post`;
-- O endpoint deve ser capaz de adicionar um novo blog post e vinculá-lo às categorias em suas tabelas no banco de dados;
+- É feita a validação do token para esta rota;
+- O endpoint é através do URL `/post`;
+- O endpoint é capaz de adicionar um novo blog post e vinculá-lo às categorias em suas tabelas no banco de dados;
 - O corpo da requisição deverá seguir o formato abaixo:
   ```json
   {
