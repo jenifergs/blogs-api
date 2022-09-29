@@ -6,6 +6,7 @@
 * [Sobre o desenvolvimento](#sobre)
 * [Diagrama ER e Entidades](#diagrama)
 * [O que foi desenvolvido](#desen)
+* [Tecnologias utilizadas](#tecnologias-utilizadas)
 * [Desenvolvedores e demais contribuidores](#pessoas-envolvidas)
 * [Conclusão](#conclusão)
 
@@ -738,3 +739,25 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
       []
     ```
 </details>
+
+<h2 id="tecnologias-utilizadas">Tecnologias utilizadas</h2>
+
+* `Javascript`
+* `NodeJs`
+* `JWT (JSON Web Token) `
+* `MySql`
+* `ORM sequelize`
+* `Express`
+* `Docker`
+* `Arquitetura de software - MSC`
+
+
+<h2 id="pessoas-envolvidas">Desenvolvedores e demais contribuidores</h2>
+
+* <strong>Jenifer Gonçalves</strong> - Desenvolvedora Web;
+* <strong>Trybe - Escola de ensino de programação</strong>;
+
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>Programar é um eterno aprendizado. Quanto mais se pratica, mais se melhora. Praticar conceitos de programação com coisas que se é apaixonado apimenta ainda mais a relação! Muitos aprendizados novos são adicionados a cada dia, fazendo com que este projeto já tenha valido a pena antes mesmo de ser concluído!</p>
