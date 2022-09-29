@@ -86,8 +86,9 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 <br />
 
 <h3 id="desen">
-# O que foi desenvolvido: 
+## O que foi desenvolvido:
 </h3>
+
 ## 1 - Criação de migrations para as tabelas `users`, `categories`, `blog_posts`, `posts_categories`: 
 
 - As `migrations` respeitam o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
