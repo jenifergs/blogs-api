@@ -85,8 +85,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 <br />
 
-<h3 id="desen">
-## O que foi desenvolvido:
+<h3 id="desen">O que foi desenvolvido:
 </h3>
 
 ## 1 - Criação de migrations para as tabelas `users`, `categories`, `blog_posts`, `posts_categories`: 
