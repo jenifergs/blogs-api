@@ -5,7 +5,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 <br />
 
 <details>
-  <summary><strong>👨‍💻 O que foi desenvolvido</strong></summary>
+  <summary><strong>👨‍💻 Sobre o desenvolvimento</strong></summary>
 
   Neste projeto foi desenvolvido uma API e um banco de dados para a produção de conteúdo para um blog! 
 
@@ -74,16 +74,16 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 <br />
 
-# Requisitos Obrigatórios
+# O que foi desenvolvido: 
 
-## 1 - Criação de migrations para as tabelas `users`, `categories`, `blog_posts`, `posts_categories`
+## 1 - Criação de migrations para as tabelas `users`, `categories`, `blog_posts`, `posts_categories`: 
 
 - As `migrations` respeitam o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
 - Todas as tabelas e colunas devem estão em `snake_case` 
 
 ---
 
-## 2 - O modelo `User` em `src/models/User.js` possui:
+## 2 - Criação de models `User`, `Category`, `BlogPost`, `PostCategory`,  em `src/models` possui:
 
 - A `model` respeita o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
 - As propriedades podem estar em `camelCase` se `underscored` for `true`. Ou seja, quando os dados forem inseridos ou selecionados via `model` devem estar em `camelCase`, mas quando as _queries_ forem pra o banco os campos das colunas devem estar em `snake_case`.
@@ -285,14 +285,6 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 </details>
 
 ---
-
-## 7 - O modelo `Category` em `src/models/Category.js` possui:
-
-- A `model` respeita o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
-- A `model` foi desenvolvida em formato funcional.
-
----
-
 ## 8 - A aplicação possui o endpoint POST `/categories`
 
 - É feita a validação do token para esta rota;
@@ -360,22 +352,6 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 </details>
 
 ---
-
-## 10 - A modelo `BlogPost` em `src/models/BlogPost.js` possui:
-
-- A `model` respeita o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
-- A `model` respeita a associação correta *(N:1)* com o modelo `User`;
-- As propriedades podem estar em `camelCase` se `underscored` for `true`. Ou seja, quando os dados forem inseridos ou selecionados via `model` devem estar em `camelCase`, mas quando as _queries_ forem pra o banco os campos das colunas devem estar em `snake_case`.
-- A `model` foi desenvolvida em formato funcional.
-
----
-
-## 11 - Ao modelo `PostCategory` em `src/models/PostCategory.js` possui:
-
-- A `model` respeita o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
-- A `model` respeita a associação correta *(N:N)* entre o modelo `BlogPost` e o modelo `Category`;
-- As propriedades podem estar em `camelCase` se `underscored` for `true`. Ou seja, quando os dados forem inseridos ou selecionados via `model` devem estar em `camelCase`, mas quando as _queries_ forem pra o banco os campos das colunas devem estar em `snake_case`.
-- A `model` foi desenvolvida em formato funcional.
 
 ---
 
@@ -603,8 +579,6 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-# Requisitos Bônus
-
 ## 16 - Sua aplicação deve ter o endpoint DELETE `/post/:id`
 
 - ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
@@ -672,9 +646,6 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
   ```js
     http://localhost:PORT/post/search?q=vamos
   ```
-
-- **✨ Dica:**
-  - Explore como fazer LIKE no Sequelize igual aprendemos no [dia 20.3 - Pesquisas mais dinâmicas e maleáveis com LIKE do course](https://app.betrybe.com/course/back-end/introducao-a-sql/filtrando-dados-de-forma-especifica/9464be4d-cfd8-4fd0-9b31-f037b3c62bff/conteudos/8ab54a4e-f823-4998-a267-297ff542de96/como-criar-pesquisas-mais-dinamicas-e-maleaveis-usando-o-like/1aee7e62-e43f-4a51-ad03-d064dcc68aed?use_case=side_bar);
 
 <details>
   <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
