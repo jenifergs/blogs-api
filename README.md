@@ -760,4 +760,4 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 <h2 id="conclusão">Conclusão</h2>
 
-<p>Programar é um eterno aprendizado. Quanto mais se pratica, mais se melhora. Praticar conceitos de programação com coisas que se é apaixonado apimenta ainda mais a relação! Muitos aprendizados novos são adicionados a cada dia, fazendo com que este projeto já tenha valido a pena antes mesmo de ser concluído!</p>
+<p>Programação exige conhecimento contínuo, foi um grande desafio, porém, muito satisfatório todo o desenvolvimento deste projeto, em tudo o que fazemos, aprendemos algo novo. A aplicação foi feita com muito amor e dedicação, além de reforçar que existem conhecimentos que não são ensinados na sala de aula, mas adquiridos através da experiência e da vivência. </p>
