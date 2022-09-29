@@ -85,9 +85,8 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 <br />
 
-<h3 id="desen">O que foi desenvolvido:
-</h3>
-
+<h3 id="desen">O que foi desenvolvido:</h3>
+  <summary  id="fluxo"><strong>Fluxo de construção da aplicação</strong>
 ## 1 - Criação de migrations para as tabelas `users`, `categories`, `blog_posts`, `posts_categories`: 
 
 - As `migrations` respeitam o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
@@ -629,11 +628,11 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ## 15 - Sua aplicação deve ter o endpoint GET `/post/search?q=:searchTerm`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post/search`;
-- O endpoint deve ser capaz de trazer os blogs post baseados no `q` do banco de dados, se ele existir;
-- Sua aplicação deve ser capaz de retornar um array de blogs post que contenham em seu título ou conteúdo o termo passado na URL;
-- Sua aplicação deve ser capaz de retornar um array vázio caso nenhum blog post satisfaça a busca;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/post/search`;
+- O endpoint é capaz de trazer os blogs post baseados no `q` do banco de dados, se ele existir;
+- A aplicação é capaz de retornar um array de blogs post que contenham em seu título ou conteúdo o termo passado na URL;
+- A aplicação é capaz de retornar um array vázio caso nenhum blog post satisfaça a busca;
 - O query params da requisição deverá seguir o formato abaixo:
   ```js
     http://localhost:PORT/post/search?q=vamos
@@ -738,5 +737,5 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
       []
     ```
-
 </details>
+  </summary>
