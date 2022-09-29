@@ -231,8 +231,6 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 <details>
   <summary><strong>Validações para este endpoint:</strong></summary>
 
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
-
   * **[Será validado que é possível listar todos os usuários]**
     - Ao listar usuários com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
     ```json
@@ -285,7 +283,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 </details>
 
 ---
-## 8 - A aplicação possui o endpoint POST `/categories`
+## 7 - A aplicação possui o endpoint POST `/categories`
 
 - É feita a validação do token para esta rota;
 - O endpoint é acessível através do URL `/categories`;
@@ -322,7 +320,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 9 - A aplicação possui o endpoint GET `/categories`
+## 8 - A aplicação possui o endpoint GET `/categories`
 
 - É feita a validação do token para esta rota;
 - O endpoint é acessível através do URL `/categories`;
@@ -353,9 +351,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
----
-
-## 12 - A aplicação possui o endpoint POST `/post`
+## 9 - A aplicação possui o endpoint POST `/post`
 
 - É feita a validação do token para esta rota;
 - O endpoint é através do URL `/post`;
@@ -368,17 +364,9 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
     "categoryIds": [1, 2]
   }
   ```
-  
-
-- **✨ Dicas:**
-  - Explore outros [find na documentação do Sequelize](https://sequelize.org/docs/v6/core-concepts/model-querying-finders/#findandcountall);
-  - Explore outros [insert na documentação do Sequelize](https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#creating-in-bulk);
-  - Explore a seção [Transações do dia 24.2 no course](https://app.betrybe.com/course/back-end/nodejs-orm-autenticacao/orm-associations/043e2e8a-c28e-4b95-a949-b7c43221ca8d/conteudos/5a2fce85-9b17-4061-8859-47da08ed1155/transacoes/e0bbdd2e-97ea-4a9d-8f90-4feab0e5657d?use_case=side_bar), essa seção vai deixar suas aplicações com mais confiablidade e atomicidade, quando o assunto for transações de banco de dados;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que não é possível cadastrar sem todos os campos preenchidos]**
     - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
@@ -414,16 +402,14 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 13 - Sua aplicação deve ter o endpoint GET `/post`
+## 10 - Sua aplicação deve ter o endpoint GET `/post`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post`;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/post`;
 - O endpoint deve ser capaz de trazer todos os blogs post, user dono dele e as categorias do banco de dados;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que é possível listar blogpost com sucesso]**
     - Ao listar posts com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
@@ -459,16 +445,14 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 14 - Sua aplicação deve ter o endpoint GET `/post/:id`
+## 11 - Sua aplicação deve ter o endpoint GET `/post/:id`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post/:id`;
-- O endpoint deve ser capaz de trazer o blog post baseado no `id` do banco de dados se ele existir;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/post/:id`;
+- O endpoint é capaz de trazer o blog post baseado no `id` do banco de dados se ele existir;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que é possível listar um blogpost com sucesso]**
     - Ao listar um post com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
@@ -508,14 +492,14 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 15 - Sua aplicação deve ter o endpoint PUT `/post/:id`
+## 12 - Sua aplicação deve ter o endpoint PUT `/post/:id`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post/:id`;
-- O endpoint deve ser capaz de alterar um post do banco de dados, se ele existir;
-- Sua aplicação só deve permitir a alteração de um blog post caso a pessoa seja dona dele;
-- Sua aplicação não deve permitir a alteração das categorias do post, somente os atributos `title` e `content` podem ser alterados;
-- O corpo da requisição deverá seguir o formato abaixo:
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/post/:id`;
+- O endpoint é capaz de alterar um post do banco de dados, se ele existir;
+- A aplicação só permite a alteração de um blog post caso a pessoa seja dona dele;
+- A aplicação não permite a alteração das categorias do post, somente os atributos `title` e `content` podem ser alterados;
+- O corpo da requisição segue o formato abaixo:
   ```json
   {
     "title": "Latest updates, August 1st",
@@ -525,7 +509,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
   
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
 
@@ -579,7 +563,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 16 - Sua aplicação deve ter o endpoint DELETE `/post/:id`
+## 13 - Sua aplicação deve ter o endpoint DELETE `/post/:id`
 
 - ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
 - O endpoint deve ser acessível através do URL `/post/:id`;
@@ -587,7 +571,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 - Sua aplicação só deve permitir a deleção de um blog post caso a pessoa seja dona dele;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
 
@@ -615,7 +599,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 17 - Sua aplicação deve ter o endpoint DELETE `/user/me`
+## 14 - Sua aplicação deve ter o endpoint DELETE `/user/me`
 
 - ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
 - O endpoint deve ser acessível através do URL `/user/me`;
@@ -623,7 +607,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 - Sua aplicação deve ser capaz de utilizar o token de autenticação nos headers, para saber o user logado correspondente á ser apagado;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
 
@@ -635,7 +619,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 18 - Sua aplicação deve ter o endpoint GET `/post/search?q=:searchTerm`
+## 15 - Sua aplicação deve ter o endpoint GET `/post/search?q=:searchTerm`
 
 - ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
 - O endpoint deve ser acessível através do URL `/post/search`;
@@ -648,7 +632,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
   ```
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
 
