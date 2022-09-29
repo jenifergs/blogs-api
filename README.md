@@ -1,6 +1,6 @@
 # Boas-vindas ao repositório do projeto API de Blogs!
 
-Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
+Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento do projeto seguindo arquitetura de software chamado de modelo baseado em camadas o qual irá possuir três camadas denominadas de Model, Service e Controller. Além do uso de JWT (JSON Web Token), para autenticação e autorização de usuário. 
 
 <br />
 
@@ -76,83 +76,24 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 # Requisitos Obrigatórios
 
-## 1 - Crie migrations para as tabelas `users`, `categories`, `blog_posts`, `posts_categories`
+## 1 - Criação de migrations para as tabelas `users`, `categories`, `blog_posts`, `posts_categories`
 
-- Esse teste fará uma conexão no banco utilizando a configuração de teste do arquivo `src/config/config.js`;
-- Suas `migrations` devem estar no diretório correto e respeitar a nomenclatura pedida no requisito;
-- Suas `migrations` devem respeitar o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
-- Todas as tabelas e colunas devem estar em `snake_case` 
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados:</strong></summary>
-
-  * **[Será validado que é possível fazer um INSERT e um SELECT na tabela users]**
-    - O avaliador irá inserir um dado de exemplo na tabela `users`;
-    - O avaliador irá fazer um select, desse mesmo dado, na tabela `users`.
-
-  * **[Será validado que é possível fazer um INSERT e um SELECT na tabela categories]**
-    - O avaliador irá inserir um dado de exemplo na tabela `categories`;
-    - O avaliador irá fazer um select, desse mesmo dado, na tabela `categories`.
-
-  * **[Será validado que, a partir de um INSERT em users, é possível fazer um INSERT e um SELECT na tabela blog_posts]**
-    - Dado que `blog_posts` possui **uma chave estrangeira** `user_id`:
-      - O avaliador irá inserir um dado de exemplo na tabela `users`;
-    - Desse modo:
-      - O avaliador irá inserir um dado de exemplo na tabela `blog_posts`;
-      - O avaliador irá fazer um select, desse mesmo dado, na tabela `blog_posts`.
-
-  * **[Será validado que, a partir de INSERTs em users, categories e blog_posts, é possível fazer um INSERT e um SELECT na tabela posts_categories]**
-    - Dado que `posts_categories` possui **uma chave primária composta de duas chaves estrangeiras**, respectivamente, `post_id`, `category_id`:
-      - O avaliador irá inserir um dado de exemplo na tabela `users`;
-      - O avaliador irá inserir um dado de exemplo na tabela `categories`;
-      - O avaliador irá inserir um dado de exemplo na tabela `blog_posts`;
-    - Desse modo:
-      - O avaliador irá inserir um dado de exemplo na tabela `posts_categories`;
-      - O avaliador irá fazer um select, desse mesmo dado, na tabela `posts_categories`.
-
-<br />
-</details>
+- As `migrations` respeitam o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
+- Todas as tabelas e colunas devem estão em `snake_case` 
 
 ---
 
-## 2 - Crie o modelo `User` em `src/models/User.js` com as propriedades corretas
+## 2 - O modelo `User` em `src/models/User.js` possui:
 
-- Sua `model` deve estar no diretório correto e respeitar a nomenclatura pedida no requisito;
-- Sua `model` deve respeitar o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
+- A `model` respeita o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
 - As propriedades podem estar em `camelCase` se `underscored` for `true`. Ou seja, quando os dados forem inseridos ou selecionados via `model` devem estar em `camelCase`, mas quando as _queries_ forem pra o banco os campos das colunas devem estar em `snake_case`.
-- Sua `model` deve ser desenvolvida em formato funcional, ou seja, não pode ser uma classe.
-
-<details>
-<summary><strong>Se você usa MacOS</strong></summary>
-  
-  Esse requisito pode dar um falso positivo! Garanta que o nome do arquivo está em `PascalCase`. O avaliador, que roda em Linux, é case-sensitive para arquivos, enquanto o MacOS, entre outros sistemas, são case-insensitive. Ou seja: na sua máquina pode rodar, e no avaliador não, então fique de olho! Caso queria se aprofundar nesse assunto, veja o seguinte [link](https://books.google.com.br/books?id=FZcQAwAAQBAJ&pg=PA14&lpg=PA14&dq=node+case+sensitive+different+operating+system&source=bl&ots=PaRv2bqgWT&sig=ACfU3U3ZC8ymhOKAXs0ERdX4FTfTBlc-IQ&hl=pt-BR&sa=X&ved=2ahUKEwiZiqK51oj6AhWXArkGHUSKDWUQ6AF6BAgrEAM#v=onepage&q=node%20case%20sensitive%20different%20operating%20system&f=false). 
-</details>
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados:</strong></summary>
-
-  * **[Será validado que existe o arquivo 'User.js']**
-
-  * **[Será validado que o modelo possui o nome 'User']**
-
-  * **[Será validado que o modelo possui a propriedade 'id']**
-
-  * **[Será validado que o modelo possui a propriedade 'display_name']**
-
-  * **[Será validado que o modelo possui a propriedade 'email']**
-
-  * **[Será validado que o modelo possui a propriedade 'password']**
-
-  * **[Será validado que o modelo possui a propriedade 'image']**
-
-<br />
-</details>
+- A `model` foir desenvolvida em formato funcional.
 
 ---
 
-## 3 - Sua aplicação deve ter o endpoint POST `/login`
+## 3 - A aplicação possui o endpoint POST `/login`
 
-- O endpoint deve ser acessível através do URL `/login`;
+- O endpoint é acessível através do URL `/login`;
 - O corpo da requisição deverá seguir o formato abaixo:
   ```json
   {
@@ -162,7 +103,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   ```
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados:</strong></summary>
+  <summary><strong>Validações para este endpoint: </strong></summary>
 
   * **[Será validado que não é possível fazer login sem todos os campos preenchidos]**
     - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
@@ -187,17 +128,17 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo1LCJkaXNwbGF5TmFtZSI6InVzdWFyaW8gZGUgdGVzdGUiLCJlbWFpbCI6InRlc3RlQGVtYWlsLmNvbSIsImltYWdlIjoibnVsbCJ9LCJpYXQiOjE2MjAyNDQxODcsImV4cCI6MTYyMDY3NjE4N30.Roc4byj6mYakYqd9LTCozU1hd9k_Vw5IWKGL4hcCVG8"
     }
     ```
-    > :warning: O token anterior é fictício, seu token deve ser gerado a partir da variável de ambiente `JWT_SECRET`, do `payload` da requisição e não deve conter o atributo `password` em sua construção.
+    > :warning: O token anterior é fictício, seu token deve ser gerado a partir da variável de ambiente `JWT_SECRET`, do `payload` da requisição e não contém o atributo `password` em sua construção.
 
 <br />
 </details>
 
 ---
 
-## 4 - Sua aplicação deve ter o endpoint POST `/user`
+## 4 - A aplicação possui o endpoint POST `/user`
 
-- O endpoint deve ser acessível através do URL `/user`;
-- O endpoint deve ser capaz de adicionar um novo `user` a sua tabela no banco de dados;
+- O endpoint é acessível através do URL `/user`;
+- O endpoint é capaz de adicionar um novo `user` à tabela no banco de dados;
 - O corpo da requisição deverá seguir o formato abaixo:
   ```json
   {
@@ -210,7 +151,7 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
   ```
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que não é possível cadastrar com o campo `displayName` menor que 8 caracteres]**
     - Se a requisição não tiver o campo `displayName` devidamente preenchido com 8 caracteres ou mais, o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
@@ -251,18 +192,12 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo1LCJkaXNwbGF5TmFtZSI6InVzdWFyaW8gZGUgdGVzdGUiLCJlbWFpbCI6InRlc3RlQGVtYWlsLmNvbSIsImltYWdlIjoibnVsbCJ9LCJpYXQiOjE2MjAyNDQxODcsImV4cCI6MTYyMDY3NjE4N30.Roc4byj6mYakYqd9LTCozU1hd9k_Vw5IWKGL4hcCVG8"
       }
       ```
-    > :warning: O token anterior é fictício, seu token deve ser gerado a partir da variável de ambiente `JWT_SECRET`, do `payload` da requisição e não deve conter o atributo `password` em sua construção.
+    > :warning: O token anterior é fictício, seu token deve ser gerado a partir da variável de ambiente `JWT_SECRET`, do `payload` da requisição e não contém o atributo `password` em sua construção.
 
 <br />
 </details>
 
 ---
-
-## :warning: Validando token nas requisições
-
-- Após termos feito o requisito de criação de `users` e o requisito de `login`, alguns requisitos abaixo vão precisar desta autenticação prévia, para que seja possível consumir o endpoint;
-- Todo requisito que precisar validar o `token` terá o símbolo ☝;
-- **✨ Dica:** Se é algo que vamos utilizar em mais de uma rota, será que podemos separa-lo em algum lugar que comece com `M` de `middleware`? 😜
 
 <details>
   <summary id="validandoToken"><strong>Os seguintes pontos serão avaliados</strong></summary>
@@ -287,14 +222,14 @@ Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu
 
 ---
 
-## 5 - Sua aplicação deve ter o endpoint GET `/user`
+## 5 - A aplicação possui o endpoint GET `/user`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/user`;
-- O endpoint deve ser capaz de trazer todos `users` do banco de dados;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/user`;
+- O endpoint é capaz de trazer todos `users` do banco de dados;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
+  <summary><strongValidações para este endpoint:</strong></summary>
 
   * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
 
