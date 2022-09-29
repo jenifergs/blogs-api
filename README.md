@@ -3,19 +3,19 @@
 <h2> Índice</h2>
 
 * [Introdução](#intro)
-* [Descrição do Projeto](#descrição-do-projeto)
-* [Mapeamento do Site](#mapeamento)
-* [Tecnologias utilizadas](#tecnologias-utilizadas)
+* [Sobre o desenvolvimento](#sobre)
+* [Diagrama ER e Entidades](#diagrama)
+* [O que foi desenvolvido](#desen)
 * [Desenvolvedores e demais contribuidores](#pessoas-envolvidas)
 * [Conclusão](#conclusão)
 
 <h2 id="intro">Introdução</h2>
 <p>
-Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento do projeto seguindo arquitetura de software chamado de modelo baseado em camadas o qual irá possuir três camadas denominadas de Model, Service e Controller. Além do uso de JWT (JSON Web Token), para autenticação e autorização de usuário. 
+Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento do projeto seguindo arquitetura de software chamado de modelo baseado em camadas o qual irá possuir três camadas denominadas de Model, Service e Controller. Além do uso de JWT (JSON Web Token), para autenticação e autorização de usuário. Está detalhado cada rota criada, autenticações e validações de regras de negócio.
 </p>
 <br />
 
-<details>
+<details id="sobre">
   <summary><strong>👨‍💻 Sobre o desenvolvimento</strong></summary>
 
   Neste projeto foi desenvolvido uma API e um banco de dados para a produção de conteúdo para um blog! 
@@ -85,8 +85,9 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 <br />
 
+<h3 id="desen">
 # O que foi desenvolvido: 
-
+</h3>
 ## 1 - Criação de migrations para as tabelas `users`, `categories`, `blog_posts`, `posts_categories`: 
 
 - As `migrations` respeitam o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
@@ -576,15 +577,13 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ## 13 - Sua aplicação deve ter o endpoint DELETE `/post/:id`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post/:id`;
-- O endpoint deve ser capaz de deletar um blog post baseado no `id` do banco de dados se ele existir;
-- Sua aplicação só deve permitir a deleção de um blog post caso a pessoa seja dona dele;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/post/:id`;
+- O endpoint é capaz de deletar um blog post baseado no `id` do banco de dados se ele existir;
+- A aplicação só permite a deleção de um blog post caso a pessoa seja dona dele;
 
 <details>
   <summary><strong>Validações para este endpoint:</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
 
   * **[Será validado que não é possível deletar um blogpost com outro usuário]**
     - Somente o user que criou o blog post poderá deletá-lo, o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`
@@ -612,15 +611,13 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ## 14 - Sua aplicação deve ter o endpoint DELETE `/user/me`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/user/me`;
-- O endpoint deve ser capaz de deletar você do banco de dados, baseado no `id` que esta dentro do seu `token`;
-- Sua aplicação deve ser capaz de utilizar o token de autenticação nos headers, para saber o user logado correspondente á ser apagado;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/user/me`;
+- O endpoint é capaz de deletar você do banco de dados, baseado no `id` que esta dentro do seu `token`;
+- Aa aplicação deve ser capaz de utilizar o token de autenticação nos headers, para saber o user logado correspondente á ser apagado;
 
 <details>
   <summary><strong>Validações para este endpoint:</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
 
   * **[Será validado que é possível excluir meu usuário com sucesso]**
     - Se o user for deletado com sucesso não deve ser retornada nenhuma resposta, apenas um status http `204`:
@@ -644,8 +641,6 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 <details>
   <summary><strong>Validações para este endpoint:</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
 
   * **[Será validado que é possível buscar um blogpost pelo `title`]**
     - Se a buscar for pelo `title` o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
