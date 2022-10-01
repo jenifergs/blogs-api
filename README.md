@@ -1,440 +1,45 @@
 # Boas-vindas ao repositório do projeto API de Blogs!
 
-Para realizar o projeto, atente-se a cada passo descrito a seguir, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
+<h2> Índice</h2>
 
-Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
+* [Introdução](#intro)
+* [Sobre o desenvolvimento](#sobre)
+* [Diagrama ER e Entidades](#diagrama)
+* [O que foi desenvolvido](#desen)
+* [Tecnologias utilizadas](#tecnologias-utilizadas)
+* [Desenvolvedores e demais contribuidores](#pessoas-envolvidas)
+* [Conclusão](#conclusão)
 
+<h2 id="intro">Introdução</h2>
+<p>
+Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento do projeto seguindo arquitetura de software chamado de modelo baseado em camadas o qual irá possuir três camadas denominadas de Model, Service e Controller. Além do uso de JWT (JSON Web Token), para autenticação e autorização de usuário. Está detalhado cada rota criada, autenticações e validações de regras de negócio.
+</p>
 <br />
 
-# Termos e acordos
+<details id="sobre">
+  <summary><strong>👨‍💻 Sobre o desenvolvimento</strong></summary>
 
-Ao iniciar este projeto você concorda com as diretrizes do Código de Conduta e do Manual da Pessoa Estudante da Trybe.
+  Neste projeto foi desenvolvido uma API e um banco de dados para a produção de conteúdo para um blog! 
 
-<br />
+  Este projeto é uma aplicação em `Node.js` usando o pacote `sequelize` para fazer um `CRUD` de posts.
 
-# Entregáveis
+  1. Possui endpoints que estaão conectados ao banco de dados seguindo os princípios do REST;
 
-<details>
-  <summary><strong>🤷🏽‍♀️ Como entregar</strong></summary>
+  2. É necessário usuário e login, portanto trabalhado a **relação entre** `user` e `post`; 
 
-  Para entregar o seu projeto você deverá criar um *Pull Request* neste repositório.
-
-  Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://app.betrybe.com/course/4d67f5b4-34a6-489f-a205-b6c7dc50fc16/) e nosso [Blog - Git & GitHub](https://blog.betrybe.com/tecnologia/git-e-github/) sempre que precisar!
-
-<br />
-</details>
-
-<details>
-  <summary><strong>👨‍💻 O que deverá ser desenvolvido</strong></summary>
-
-  Neste projeto você vai desenvolver uma API e um banco de dados para a produção de conteúdo para um blog! 
-
-  Você deverá desenvolver uma aplicação em `Node.js` usando o pacote `sequelize` para fazer um `CRUD` de posts.
-
-  1. Você deverá desenvolver endpoints que estarão conectados ao seu banco de dados seguindo os princípios do REST;
-
-  2. Para fazer um post é necessário usuário e login, portanto será trabalhada a **relação entre** `user` e `post`; 
-
-  3. Será necessária a utilização de categorias para os posts, trabalhando, assim, a **relação de** `posts` para `categories` e de `categories` para `posts`.
+  3. Foi necessário a utilização de categorias para os posts, trabalhando, assim, a **relação de** `posts` para `categories` e de `categories` para `posts`.
 
 <br />
 </details>
 
-<details>
-  <summary><strong>🗓 Data de Entrega</strong></summary>
-
-  * Projeto individual.
-  * Serão `3` dias de projeto.
-  * Data de entrega para avaliação final do projeto: `04/10/2022 14:00`.
-
-</details>
-
 <br />
-
-# Orientações
-
-<details>
-  <summary><strong>🐋 Rodando no Docker vs Localmente</strong></summary>
-  
-  ## 👉 Com Docker
- 
-  **:warning: Antes de começar, seu docker-compose precisa estar na versão 1.29 ou superior. [Veja aqui](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04-pt) ou [na documentação](https://docs.docker.com/compose/install/) como instalá-lo. No primeiro artigo, você pode substituir onde está com `1.26.0` por `1.29.2`.**
-
-
-  > :information_source: Rode os serviços `node` e `db` com o comando `docker-compose up -d --build`.
-
-  - Lembre-se de parar o `mysql` se estiver usando localmente na porta padrão (`3306`), ou adapte, caso queria fazer uso da aplicação em containers;
-
-  - Esses serviços irão inicializar um container chamado `blogs_api` e outro chamado `blogs_api_db`;
-
-  - A partir daqui você pode rodar o container `blogs_api` via CLI ou abri-lo no VS Code;
-
-  > :information_source: Use o comando `docker exec -it blogs_api bash`.
-
-  - Ele te dará acesso ao terminal interativo do container criado pelo compose, que está rodando em segundo plano.
-
-  > :information_source: Instale as dependências [**Caso existam**] com `npm install`. (Instale dentro do container)
-  
-  - **:warning: Atenção:** Caso opte por utilizar o Docker, **TODOS** os comandos disponíveis no `package.json` (npm start, npm test, npm run dev, ...) devem ser executados **DENTRO** do container, ou seja, no terminal que aparece após a execução do comando `docker exec` citado acima. 
-
-  - **:warning: Atenção:** O **git** dentro do container não vem configurado com suas credenciais. Ou faça os commits fora do container, ou configure as suas credenciais do git dentro do container.
-
-  - **:warning: Atenção:** Não rode o comando npm audit fix! Ele atualiza várias dependências do projeto, e essa atualização gera conflitos com o avaliador.
-
-  - ✨ **Dica:** A extensão `Remote - Containers` (que estará na seção de extensões recomendadas do VS Code) é indicada para que você possa desenvolver sua aplicação no container Docker direto no VS Code, como você faz com seus arquivos locais.
-
-  ![sequelize test](./public/remote-container.png)
-
-  <br />
-  
-  ## 👉 Sem Docker
-
-  > :information_source: Instale as dependências [**Caso existam**] com `npm install`
-  
-  - **:warning: Atenção:** Não rode o comando npm audit fix! Ele atualiza várias dependências do projeto, e essa atualização gera conflitos com o avaliador.
-
-  - **✨ Dica:** Para rodar o projeto desta forma, obrigatoriamente você deve ter o `node` instalado em seu computador.
-  - **✨ Dica:** O avaliador espera que a versão do `node` utilizada seja a 16.
-
-  <br/>
-</details>
-
-
-<details>
-  <summary><strong>‼️ Antes de começar a desenvolver</strong></summary>
-
-1. Clone o repositório
-  * `git clone git@github.com:tryber/sd-021-a-project-blogs-api.git`.
-  * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-021-a-project-blogs-api`
-
-2. Instale as dependências [**Caso existam**]
-  * `npm install`
-
-3. Crie uma branch a partir da branch `master`
-  * Verifique que você está na branch `master`
-    * Exemplo: `git branch`
-  * Se não estiver, mude para a branch `master`
-    * Exemplo: `git checkout master`
-  * Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
-    * Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
-    * Exemplo: `git checkout -b joaozinho-sd-021-a-project-blogs-api`
-
-4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
-  * Verifique que as mudanças ainda não estão no _stage_
-    * Exemplo: `git status` (deve aparecer listada a pasta _joaozinho_ em vermelho)
-  * Adicione o novo arquivo ao _stage_ do Git
-      * Exemplo:
-        * `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
-        * `git status` (deve aparecer listado o arquivo _joaozinho/README.md_ em verde)
-  * Faça o `commit` inicial
-      * Exemplo:
-        * `git commit -m 'iniciando o projeto x'` (fazendo o primeiro commit)
-        * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
-
-5. Adicione a sua branch com o novo `commit` ao repositório remoto
-  * Usando o exemplo anterior: `git push -u origin joaozinho-sd-021-a-project-blogs-api`
-
-6. Crie um novo `Pull Request` _(PR)_
-  * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-021-a-project-blogs-api/pulls)
-  * Clique no botão verde _"New pull request"_
-  * Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
-  * Clique no botão verde _"Create pull request"_
-  * Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
-  * **Não se preocupe em preencher mais nada por enquanto!**
-  * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-021-a-project-blogs-api/pulls) e confira que o seu _Pull Request_ está criado
-
-<br />
-</details>
-
-<details>
-  <summary><strong>⌨️ Durante o desenvolvimento</strong></summary>
-
-  * Faça `commits` das alterações que você fizer no código regularmente
-
-  * Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto
-
-  * Os comandos que você utilizará com mais frequência são:
-    * `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_
-    * `git add` _(para adicionar arquivos ao stage do Git)_
-    * `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_
-    * `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_
-    * `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_
-
-<br />
-</details>
-
-<details>
-  <summary><strong>🤝 Depois de terminar o desenvolvimento (opcional)</strong></summary>
-
-  Para "entregar" seu projeto, siga os passos a seguir:
-
-  - Vá até a página DO SEU Pull Request, adicione a label de "code-review" e marque seus colegas
-    - No menu à direita, clique no *link* "Labels" e escolha a label code-review
-    - No menu à direita, clique no *link* "Assignees" e escolha o seu usuário
-    - No menu à direita, clique no *link* "Reviewers" e digite students, selecione o time tryber/students-sd-00
-
-  Se ainda houver alguma dúvida sobre como entregar seu projeto, [aqui tem um video explicativo](https://vimeo.com/362189205).
-  
-  :warning: **Lembre-se de garantir que todas as _issues_ comentadas pelo Linter estão resolvidas!**
-
-<br />
-</details>
-
-<details>
-  <summary><strong>🕵🏿 Revisando um pull request</strong></summary>
-
-  À medida que você e as outras pessoas que estudam na Trybe forem entregando os projetos, vocês receberão um alerta via Slack para também fazer a revisão dos Pull Requests de colegas. Fique atento às mensagens do "Pull Reminders" no Slack!
-
-  Use o material que você já viu sobre [Code Review](https://course.betrybe.com/real-life-engineer/code-review/) para te ajudar a revisar os projetos que chegaram para você.
-
-<br />
-</details>
-
-<details>
-  <summary><strong>🛠 Execução de testes localmente</strong></summary>
-
-  > :information_source: IMPORTANTE
-  
-  - O teste local deve rodar o script `npm run start:test`, que vai iniciar e depois encerrar, em segundo plano **outra instância da sua API, na porta `3030`**. Dessa forma, o teste conseguira consumir sua API e validar os requisitos.
-    - Caso seu computador não suporte rodar um servidor extra para os testes, execute um servidor na porta 3000 e rode o script `npm run test:dev`, este não vai criar outra instância, mas vai esperar um servidor na porta 3000. 
-
-  - Sua API deve estar funcionando minimamente para que o teste comece, dado que ele aguarda o estabelecimento da mesma para começar o teste.
-
-  - Todos os testes **vão gerar e consumir um banco de dados próprio com final `*-test`**, que é gerado através da configuração do arquivo `src/config/config.js`.
-
-  - Isso vai garantir que durante seu desenvolvimento, o teste não manipule ou derrube sua API na porta padrão (`3000`) ou seu banco de dados padrão (final `*-dev`), isolando os mesmos.
-
-  - Caso ocorra algum problema, encerre o teste com `[CTRL] + [C]` e utilize o script `npm run kill:test`
-
-  ---
-
-  O teste local já é configurado, internamente, com a variável de ambiente `NODE_ENV=test` para indicar o banco a ser utilizado pelo Sequelize, o que deve resultar na criação de um banco, somente para o teste:
-
-  ![sequelize test](./public/sequelize-02.png)
-
-  Sem essa variável (modo padrão de desenvolvimento), sua API deve resultar algo como:
-
-  ![sequelize development](./public/sequelize-01.png)
-
-  ---
-
-  > :information_source: Scripts para executar os testes locais:
-
-  Vamos usar o Jest para executar os testes, use o comando a seguir para executar todos os testes: 
-
-  ```sh
-  npm test
-  ```
-
-  Caso queira executar só um arquivo de test use o seguinte comando, considerado que quer testar o arquivo `tests/req07-createPost.test.js`:
-
-  ```sh
-  npm test tests/req07-createPost.test.js
-  ```
-  ou
-  ```
-  npm test req07
-  ```
-
-  Caso queira omitir dados de debug nos testes, utilize a variável de ambiente `DEBUG=false`, como em `DEBUG=false npm test`.
-
-<br />
-</details>
-
-<details>
-  <summary><strong>🎛 Linter</strong></summary>
-
-  Para garantir a qualidade do código, usaremos o [ESLint](https://eslint.org/) para fazer a sua análise estática.
-
-  Este projeto já vem com as dependências relacionadas ao _linter_ configuradas nos arquivos `package.json` nos seguintes caminhos:
-
-  - `sd-021-a-project-blogs-api/package.json`
-
-  Para poder rodar os `ESLint` em um projeto basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
-
-  Você também pode instalar o plugin do `ESLint` no `VSCode`, bastar baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) e instalá-lo
-
-  :warning: **PULL REQUESTS COM ISSUES DE LINTER NÃO SERÃO AVALIADAS. ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO!** ⚠️
-
-<br />
-</details>
-
-<details>
-  <summary><strong>⚠️ Informações importantes sobre o projeto</strong></summary>
-
-  ## ⚠️ Leia-os atentamente e siga à risca o que for pedido. ⚠️
-
-  ### 👀 Observações importantes:
-
-  Em cada requisito você encontrará uma imagem demonstrando como sua API deverá se comportar, dada a requisição específica.
-
-  O não cumprimento de um requisito, total ou parcialmente, impactará em sua avaliação.
-
-  O projeto possui uma pasta `src`, e é **fortemente recomendável que você construa sua aplicação dentro dessa pasta**.
-
-  **Não é necessário usar o comando `npx sequelize-cli init`** uma vez que já é fornecido no projeto.
-
-  #### Arquivos importantes
-
-  ⚠️ Essa pasta ainda conta com alguns arquivos auxiliares que serão consumidos pelo avaliador e **não devem ser apagados em nenhuma hipótese**:
-
-  > `src/app.js`
-  ```javascript
-  const express = require('express');
-
-  // ...
-
-  const app = express();
-
-  app.use(express.json());
-
-  // ...
-
-  // É importante exportar a constante `app`, 
-  // para que possa ser utilizada pelo arquivo `src/server.js`
-  module.exports = app;
-  ```
-  Que ficará responsável por receber **as definições de middlewares e rotas** de sua API
-
-  <br />
-
-  ---
-
-  > 👉 `src/server.js`
-  ```javascript
-  const app = require('./app');
-
-  // não remova a variável `API_PORT` ou o `listen`
-  const port = process.env.API_PORT || 3000;
-
-  // não remova esse endpoint
-  app.get('/', (request, response) => {
-    response.send();
-  });
-
-  app.listen(port, () => console.log('ouvindo porta', port));
-  ```
-  Que ficará responsável por iniciar sua API
-
-  <br />
-
-  ---
-
-  > 👉 `src/config/config.js`
-  ```javascript
-  require('dotenv').config();
-
-  const environment = process.env.NODE_ENV || 'test';
-
-  const suffix = {
-    dev: '-dev',
-    development: '-dev',
-    test: '-test',
-  };
-
-  const options = {
-    host: process.env.MYSQL_HOST || 'localhost',
-    port: process.env.MYSQL_PORT || '3306',
-    database: 
-      `${process.env.MYSQL_DB_NAME || 'blogs-api'}${suffix[environment] || suffix.test}`,
-    username: process.env.MYSQL_USER || 'root',
-    password: process.env.MYSQL_PASSWORD || '1234',
-    dialect: 'mysql',
-    dialectOptions: {
-      timezone: 'Z',
-    },
-    logging: process.env.DEBUG !== 'false',
-  };
-
-  module.exports = {
-    development: {
-      ...options,
-    },
-    test: {
-      ...options,
-    },
-  };
-  ```
-  Que é o arquivo de configuração principal do *Sequelize*
-
-  <br />
-
-  ---
-
-  > 👉 `.sequelizerc`
-  ```javascript
-  const path = require('path');
-
-  module.exports = {
-    'config': path.resolve('src',  'config', 'config.js'),
-    'models-path': path.resolve('src',  'models'),
-    'seeders-path': path.resolve('src',  'seeders'),
-    'migrations-path': path.resolve('src',  'migrations'),
-  };
-  ```
-  Responsável por identificar os caminhos dos recursos do Sequelize
-
-  <br />
-
-  ---
-
-  **Você irá precisar configurar as variáveis de ambiente para uso do MySQL.** Você pode usar esse [Conteúdo de variáveis de ambiente com NodeJS](https://dev.to/pauloricardoz/usando-variaveis-de-ambiente-em-nodejs-env--4ioi) como referência.
-
-  O arquivo a seguir, contém um modelo das variáveis de ambiente utilizadas no projeto. Para o contexto de teste local, é importante configurar as variáveis: `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`:
-
-  > 👉 `.env.example`
-  ```env
-#### SERVER VARS
-NODE_ENV=development
-API_PORT=3000
-API_HOST=localhost
-
-#### DATABASE VARS
-MYSQL_HOST=localhost
-MYSQL_PORT=3306
-MYSQL_DB_NAME=blogs-api
-MYSQL_USER=root
-MYSQL_PASSWORD=1234
-
-#### SECRECT VARS
-JWT_SECRET=suaSenhaSecreta
-
-  ```
-
-  #### Variável `JWT_SECRET`:
-  
-  Esta variável de ambiente deverá ser utilizada tanto para criar o token quanto para verificá-lo. Os teste locais e o avaliador vão utilizar a variável de ambiente `JWT_SECRET` para testar os requisitos
-
-  **:warning:️ Variáveis de ambiente além das especificadas acima não são suportadas, pois não são esperadas pelo avaliador do projeto.**
-
-<br />
-</details>
-
-<details>
-  <summary><strong>👀 Dicas</strong></summary>
-
-  #### Status HTTP
-
-  Tenha em mente que todas as "respostas" devem respeitar os [status do protocolo HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status) com base no que o REST prega.
-
-  Alguns exemplos:
-  - Requisições que precisam de token mas não o receberam devem retornar um código de `status 401`;
-
-  - Requisições que não seguem o formato pedido pelo servidor devem retornar um código de `status 400`;
-
-  - Um problema inesperado no servidor deve retornar um código de `status 500`;
-
-  - Um acesso ao criar um recurso, no nosso caso usuário ou post, deve retornar um código de `status 201`.
-
-</details>
 
 <details>
   <summary  id="diagrama"><strong>🎲 Diagrama ER e Entidades</strong></summary>
 
   #### Diagrama de Entidade-Relacionamento
 
-  Para orientar a construção das tabelas através do ORM, utilize o *DER* a seguir:
+  Para orientação na construção das tabelas através do ORM, foi utilizado o *DER* a seguir:
 
   ![DER](./public/der.png)
 
@@ -442,9 +47,9 @@ JWT_SECRET=suaSenhaSecreta
 
   #### Formato das entidades
 
-  O seu projeto deverá usar o `ORM Sequelize` para criar e atualizar o seu banco de dados. 
+  Neste projeto foi utilizado o `ORM Sequelize` para criar e atualizar o banco de dados. 
 
-  Os primeiros requisitos do projeto devem orientar a produção de suas migrations para gerar:
+  A produção das migrations geraram:
 
   - Uma tabela chamada **users**, contendo dados com a seguinte estrutura:
 
@@ -474,139 +79,33 @@ JWT_SECRET=suaSenhaSecreta
 
     *Os dados acima são fictícios, e estão aqui apenas como exemplo*
 
-    > :warning:️ Em caso de dúvidas, consulte os conteúdos:
-    > - [Transformando ideias em um modelo de banco de dados](https://app.betrybe.com/course/back-end/funcoes-sql-joins-e-normalizacao/transformando-ideias-em-um-modelo-de-banco-de-dados/a7326a61-117a-4d2f-a640-9e312b6f973b) *(Em `Database Design - Como modelar um banco de dados` > `4) Criando e modelando tabelas de acordo com um diagrama ER`)*
-    > - [ORM - Interface da aplicação com o banco de dados](https://app.betrybe.com/course/back-end/nodejs-orm-autenticacao/orm-interface-da-aplicacao-com-o-banco-de-dados/d0fc385e-b0ce-4b3d-8246-779d5dc13682) *(Em `Migrações`)*
-    > - [ORM - Associations](https://app.betrybe.com/course/back-end/nodejs-orm-autenticacao/orm-associations/043e2e8a-c28e-4b95-a949-b7c43221ca8d) *(Em `Relacionamentos N:N`)*  
-
     ---
 
-    #### Dicas de scripts prontos
-
-    - Deleta o banco de dados:
-    ```json
-    "drop": "npx sequelize-cli db:drop"
-    ```
-
-    - Cria o banco e gera as tabelas:
-    ```json
-    "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate"
-    ```
-
-    - Insere dados/Popula a tabela:
-    ```json
-    "seed": "npx sequelize-cli db:seed:all"
-    ```
-
-    **:eyes: OBS**: Os testes irão rodar através do seu migrate usando os scripts acima, também listados no `package.json`.
-
-    **⚠️ Preste bastante atenção, pois a alteração desses scripts pode impedir o avaliador de funcionar corretamente**
-
-    **:warning:️ Haverá um arquivo na pasta `/seeders`, que irá conter as queries para inserção no banco de dados. `Não a remova, pois o avaliador depende dela`.**
-
 <br />
-</details>
-
-<details>
-  <summary><strong>🗣 Nos dê feedbacks sobre o projeto!</strong></summary>
-
-  Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário. 
-  **Leva menos de 3 minutos!**
-
-  [FORMULÁRIO DE AVALIAÇÃO DE PROJETO](https://be-trybe.typeform.com/to/ZTeR4IbH)
-
-  :warning: **O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no readme. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?**
-
-<br />
-</details>
-
-<details>
-  <summary><strong>🗂 Compartilhe seu portfólio!</strong></summary>
-
-  Você sabia que o LinkedIn é a principal rede social profissional e compartilhar o seu aprendizado lá é muito importante para quem deseja construir uma carreira de sucesso? Compartilhe esse projeto no seu LinkedIn, marque o perfil da Trybe (@trybe) e mostre para a sua rede toda a sua evolução.
 </details>
 
 <br />
 
-# Requisitos Obrigatórios
+<h3 id="desen">O que foi desenvolvido:</h3>
 
-## 1 - Crie migrations para as tabelas `users`, `categories`, `blog_posts`, `posts_categories`
+## 1 - Criação de migrations para as tabelas `users`, `categories`, `blog_posts`, `posts_categories`: 
 
-- Esse teste fará uma conexão no banco utilizando a configuração de teste do arquivo `src/config/config.js`;
-- Suas `migrations` devem estar no diretório correto e respeitar a nomenclatura pedida no requisito;
-- Suas `migrations` devem respeitar o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
-- Todas as tabelas e colunas devem estar em `snake_case` 
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados:</strong></summary>
-
-  * **[Será validado que é possível fazer um INSERT e um SELECT na tabela users]**
-    - O avaliador irá inserir um dado de exemplo na tabela `users`;
-    - O avaliador irá fazer um select, desse mesmo dado, na tabela `users`.
-
-  * **[Será validado que é possível fazer um INSERT e um SELECT na tabela categories]**
-    - O avaliador irá inserir um dado de exemplo na tabela `categories`;
-    - O avaliador irá fazer um select, desse mesmo dado, na tabela `categories`.
-
-  * **[Será validado que, a partir de um INSERT em users, é possível fazer um INSERT e um SELECT na tabela blog_posts]**
-    - Dado que `blog_posts` possui **uma chave estrangeira** `user_id`:
-      - O avaliador irá inserir um dado de exemplo na tabela `users`;
-    - Desse modo:
-      - O avaliador irá inserir um dado de exemplo na tabela `blog_posts`;
-      - O avaliador irá fazer um select, desse mesmo dado, na tabela `blog_posts`.
-
-  * **[Será validado que, a partir de INSERTs em users, categories e blog_posts, é possível fazer um INSERT e um SELECT na tabela posts_categories]**
-    - Dado que `posts_categories` possui **uma chave primária composta de duas chaves estrangeiras**, respectivamente, `post_id`, `category_id`:
-      - O avaliador irá inserir um dado de exemplo na tabela `users`;
-      - O avaliador irá inserir um dado de exemplo na tabela `categories`;
-      - O avaliador irá inserir um dado de exemplo na tabela `blog_posts`;
-    - Desse modo:
-      - O avaliador irá inserir um dado de exemplo na tabela `posts_categories`;
-      - O avaliador irá fazer um select, desse mesmo dado, na tabela `posts_categories`.
-
-<br />
-</details>
+- As `migrations` respeitam o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
+- Todas as tabelas e colunas devem estão em `snake_case` 
 
 ---
 
-## 2 - Crie o modelo `User` em `src/models/User.js` com as propriedades corretas
+## 2 - Criação de models `User`, `Category`, `BlogPost`, `PostCategory`,  em `src/models` possui:
 
-- Sua `model` deve estar no diretório correto e respeitar a nomenclatura pedida no requisito;
-- Sua `model` deve respeitar o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
+- A `model` respeita o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
 - As propriedades podem estar em `camelCase` se `underscored` for `true`. Ou seja, quando os dados forem inseridos ou selecionados via `model` devem estar em `camelCase`, mas quando as _queries_ forem pra o banco os campos das colunas devem estar em `snake_case`.
-- Sua `model` deve ser desenvolvida em formato funcional, ou seja, não pode ser uma classe.
-
-<details>
-<summary><strong>Se você usa MacOS</strong></summary>
-  
-  Esse requisito pode dar um falso positivo! Garanta que o nome do arquivo está em `PascalCase`. O avaliador, que roda em Linux, é case-sensitive para arquivos, enquanto o MacOS, entre outros sistemas, são case-insensitive. Ou seja: na sua máquina pode rodar, e no avaliador não, então fique de olho! Caso queria se aprofundar nesse assunto, veja o seguinte [link](https://books.google.com.br/books?id=FZcQAwAAQBAJ&pg=PA14&lpg=PA14&dq=node+case+sensitive+different+operating+system&source=bl&ots=PaRv2bqgWT&sig=ACfU3U3ZC8ymhOKAXs0ERdX4FTfTBlc-IQ&hl=pt-BR&sa=X&ved=2ahUKEwiZiqK51oj6AhWXArkGHUSKDWUQ6AF6BAgrEAM#v=onepage&q=node%20case%20sensitive%20different%20operating%20system&f=false). 
-</details>
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados:</strong></summary>
-
-  * **[Será validado que existe o arquivo 'User.js']**
-
-  * **[Será validado que o modelo possui o nome 'User']**
-
-  * **[Será validado que o modelo possui a propriedade 'id']**
-
-  * **[Será validado que o modelo possui a propriedade 'display_name']**
-
-  * **[Será validado que o modelo possui a propriedade 'email']**
-
-  * **[Será validado que o modelo possui a propriedade 'password']**
-
-  * **[Será validado que o modelo possui a propriedade 'image']**
-
-<br />
-</details>
+- A `model` foi desenvolvida em formato funcional.
 
 ---
 
-## 3 - Sua aplicação deve ter o endpoint POST `/login`
+## 3 - A aplicação possui o endpoint POST `/login`
 
-- O endpoint deve ser acessível através do URL `/login`;
+- O endpoint é acessível através do URL `/login`;
 - O corpo da requisição deverá seguir o formato abaixo:
   ```json
   {
@@ -616,7 +115,7 @@ JWT_SECRET=suaSenhaSecreta
   ```
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados:</strong></summary>
+  <summary><strong>Validações para este endpoint: </strong></summary>
 
   * **[Será validado que não é possível fazer login sem todos os campos preenchidos]**
     - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
@@ -641,17 +140,17 @@ JWT_SECRET=suaSenhaSecreta
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo1LCJkaXNwbGF5TmFtZSI6InVzdWFyaW8gZGUgdGVzdGUiLCJlbWFpbCI6InRlc3RlQGVtYWlsLmNvbSIsImltYWdlIjoibnVsbCJ9LCJpYXQiOjE2MjAyNDQxODcsImV4cCI6MTYyMDY3NjE4N30.Roc4byj6mYakYqd9LTCozU1hd9k_Vw5IWKGL4hcCVG8"
     }
     ```
-    > :warning: O token anterior é fictício, seu token deve ser gerado a partir da variável de ambiente `JWT_SECRET`, do `payload` da requisição e não deve conter o atributo `password` em sua construção.
+    > :warning: O token anterior é fictício, seu token deve ser gerado a partir da variável de ambiente `JWT_SECRET`, do `payload` da requisição e não contém o atributo `password` em sua construção.
 
 <br />
 </details>
 
 ---
 
-## 4 - Sua aplicação deve ter o endpoint POST `/user`
+## 4 - A aplicação possui o endpoint POST `/user`
 
-- O endpoint deve ser acessível através do URL `/user`;
-- O endpoint deve ser capaz de adicionar um novo `user` a sua tabela no banco de dados;
+- O endpoint é acessível através do URL `/user`;
+- O endpoint é capaz de adicionar um novo `user` à tabela no banco de dados;
 - O corpo da requisição deverá seguir o formato abaixo:
   ```json
   {
@@ -664,7 +163,7 @@ JWT_SECRET=suaSenhaSecreta
   ```
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que não é possível cadastrar com o campo `displayName` menor que 8 caracteres]**
     - Se a requisição não tiver o campo `displayName` devidamente preenchido com 8 caracteres ou mais, o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
@@ -705,18 +204,12 @@ JWT_SECRET=suaSenhaSecreta
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo1LCJkaXNwbGF5TmFtZSI6InVzdWFyaW8gZGUgdGVzdGUiLCJlbWFpbCI6InRlc3RlQGVtYWlsLmNvbSIsImltYWdlIjoibnVsbCJ9LCJpYXQiOjE2MjAyNDQxODcsImV4cCI6MTYyMDY3NjE4N30.Roc4byj6mYakYqd9LTCozU1hd9k_Vw5IWKGL4hcCVG8"
       }
       ```
-    > :warning: O token anterior é fictício, seu token deve ser gerado a partir da variável de ambiente `JWT_SECRET`, do `payload` da requisição e não deve conter o atributo `password` em sua construção.
+    > :warning: O token anterior é fictício, seu token deve ser gerado a partir da variável de ambiente `JWT_SECRET`, do `payload` da requisição e não contém o atributo `password` em sua construção.
 
 <br />
 </details>
 
 ---
-
-## :warning: Validando token nas requisições
-
-- Após termos feito o requisito de criação de `users` e o requisito de `login`, alguns requisitos abaixo vão precisar desta autenticação prévia, para que seja possível consumir o endpoint;
-- Todo requisito que precisar validar o `token` terá o símbolo ☝;
-- **✨ Dica:** Se é algo que vamos utilizar em mais de uma rota, será que podemos separa-lo em algum lugar que comece com `M` de `middleware`? 😜
 
 <details>
   <summary id="validandoToken"><strong>Os seguintes pontos serão avaliados</strong></summary>
@@ -741,16 +234,14 @@ JWT_SECRET=suaSenhaSecreta
 
 ---
 
-## 5 - Sua aplicação deve ter o endpoint GET `/user`
+## 5 - A aplicação possui o endpoint GET `/user`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/user`;
-- O endpoint deve ser capaz de trazer todos `users` do banco de dados;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/user`;
+- O endpoint é capaz de trazer todos `users` do banco de dados;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que é possível listar todos os usuários]**
     - Ao listar usuários com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
@@ -772,16 +263,14 @@ JWT_SECRET=suaSenhaSecreta
 
 ---
 
-## 6 - Sua aplicação deve ter o endpoint GET `/user/:id`
+## 6 - A aplicação possui o endpoint GET `/user/:id`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/user/:id`;
-- O endpoint deve ser capaz de trazer o `user` baseado no `id` do banco de dados se ele existir;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/user/:id`;
+- O endpoint é capaz de trazer o `user` baseado no `id` do banco de dados se ele existir;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que é possível listar um usuário específico com sucesso]**
     - Ao listar um usuário com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
@@ -806,41 +295,11 @@ JWT_SECRET=suaSenhaSecreta
 </details>
 
 ---
+## 7 - A aplicação possui o endpoint POST `/categories`
 
-## 7 - Crie o modelo `Category` em `src/models/Category.js` com as propriedades corretas
-
-- Sua `model` deve estar no diretório correto e respeitar a nomenclatura pedida no requisito;
-- Sua `model` deve respeitar o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama).
-- Sua `model` deve ser desenvolvida em formato funcional, ou seja, não pode ser uma classe.
-
-<details>
-<summary><strong>Se você usa MacOS</strong></summary>
-  
-  Esse requisito pode dar um falso positivo! Garanta que o nome do arquivo está em `PascalCase`. O avaliador, que roda em Linux, é case-sensitive para arquivos, enquanto o MacOS, entre outros sistemas, são case-insensitive. Ou seja: na sua máquina pode rodar, e no avaliador não, então fique de olho! Caso queria se aprofundar nesse assunto, veja o seguinte [link](https://books.google.com.br/books?id=FZcQAwAAQBAJ&pg=PA14&lpg=PA14&dq=node+case+sensitive+different+operating+system&source=bl&ots=PaRv2bqgWT&sig=ACfU3U3ZC8ymhOKAXs0ERdX4FTfTBlc-IQ&hl=pt-BR&sa=X&ved=2ahUKEwiZiqK51oj6AhWXArkGHUSKDWUQ6AF6BAgrEAM#v=onepage&q=node%20case%20sensitive%20different%20operating%20system&f=false). 
-</details>
-
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * **[Será validado que existe o arquivo 'Category.js']**
-
-  * **[Será validado que o modelo possui o nome 'Category']**
-
-  * **[Será validado que o modelo possui a propriedade 'id']**
-
-  * **[Será validado que o modelo possui a propriedade 'name']**
-
-<br />
-</details>
-
----
-
-## 8 - Sua aplicação deve ter o endpoint POST `/categories`
-
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/categories`;
-- O endpoint deve ser capaz de adicionar uma nova categoria a sua tabela no banco de dados;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/categories`;
+- O endpoint é capaz de adicionar uma nova categoria à tabela no banco de dados;
 - O corpo da requisição deverá seguir o formato abaixo:
   ```json
   {
@@ -849,9 +308,7 @@ JWT_SECRET=suaSenhaSecreta
   ```
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:s</strong></summary>
 
   * **[Será validado que não é possível cadastrar uma categoria sem o campo `name`]**
     - Se a requisição não tiver o campo `name` devidamente preenchidos(não pode haver campo em branco), o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
@@ -875,16 +332,14 @@ JWT_SECRET=suaSenhaSecreta
 
 ---
 
-## 9 - Sua aplicação deve ter o endpoint GET `/categories`
+## 8 - A aplicação possui o endpoint GET `/categories`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/categories`;
-- O endpoint deve ser capaz de trazer todas categorias do banco de dados;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/categories`;
+- O endpoint é capaz de trazer todas categorias do banco de dados;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que é possível listar todas as categoria com sucesso]**
     - Ao listar categorias com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
@@ -908,90 +363,11 @@ JWT_SECRET=suaSenhaSecreta
 
 ---
 
-## 10 - Crie o modelo `BlogPost` em `src/models/BlogPost.js` com as propriedades e associações corretas
+## 9 - A aplicação possui o endpoint POST `/post`
 
-- Sua `model` deve estar no diretório correto e respeitar a nomenclatura pedida no requisito;
-- Sua `model` deve respeitar o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
-- Sua `model` deve respeitar a associação correta *(N:1)* com o modelo `User`;
-- As propriedades podem estar em `camelCase` se `underscored` for `true`. Ou seja, quando os dados forem inseridos ou selecionados via `model` devem estar em `camelCase`, mas quando as _queries_ forem pra o banco os campos das colunas devem estar em `snake_case`.
-- Sua `model` deve ser desenvolvida em formato funcional, ou seja, não pode ser uma classe.
-
-- **✨ Dica:**
-  - Explore como renomear campos no Sequelize;
-
-<details>
-<summary><strong>Se você usa MacOS</strong></summary>
-  
-  Esse requisito pode dar um falso positivo! Garanta que o nome do arquivo está em `PascalCase`. O avaliador, que roda em Linux, é case-sensitive para arquivos, enquanto o MacOS, entre outros sistemas, são case-insensitive. Ou seja: na sua máquina pode rodar, e no avaliador não, então fique de olho! Caso queria se aprofundar nesse assunto, veja o seguinte [link](https://books.google.com.br/books?id=FZcQAwAAQBAJ&pg=PA14&lpg=PA14&dq=node+case+sensitive+different+operating+system&source=bl&ots=PaRv2bqgWT&sig=ACfU3U3ZC8ymhOKAXs0ERdX4FTfTBlc-IQ&hl=pt-BR&sa=X&ved=2ahUKEwiZiqK51oj6AhWXArkGHUSKDWUQ6AF6BAgrEAM#v=onepage&q=node%20case%20sensitive%20different%20operating%20system&f=false). 
-</details>
-
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * **[Será validado que existe o arquivo 'BlogPost.js']**
-
-  * **[Será validado que o modelo possui o nome 'BlogPost']**
-
-  * **[Será validado que o modelo possui a propriedade 'id']**
-
-  * **[Será validado que o modelo possui a propriedade 'title']**
-
-  * **[Será validado que o modelo possui a propriedade 'content']**
-
-  * **[Será validado que o modelo possui a propriedade 'user_id']**
-
-  * **[Será validado que o modelo possui a propriedade 'published']**
-
-  * **[Será validado que o modelo possui a propriedade 'updated']**
-
-  * **[Será validado que o modelo em 'BlogPost.js', define a associação 'belongsTo', com a entidade de nome 'User']**
-
-  * **[Será validado que o modelo em 'User.js', define a associação 'hasMany', com a entidade de nome 'BlogPost']**
-
-<br />
-</details>
-
----
-
-## 11 - Crie o modelo `PostCategory` em `src/models/PostCategory.js` com as propriedades e associações corretas
-
-- Sua `model` deve estar no diretório correto e respeitar a nomenclatura pedida no requisito;
-- Sua `model` deve respeitar o _diagrama de Entidade-Relacionamento_ e o _formato das entidades_, como descrito na seção de [Diagrama ER e Entidades](#diagrama);
-- Sua `model` deve respeitar a associação correta *(N:N)* entre o modelo `BlogPost` e o modelo `Category`;
-- As propriedades podem estar em `camelCase` se `underscored` for `true`. Ou seja, quando os dados forem inseridos ou selecionados via `model` devem estar em `camelCase`, mas quando as _queries_ forem pra o banco os campos das colunas devem estar em `snake_case`.
-- Sua `model` deve ser desenvolvida em formato funcional, ou seja, não pode ser uma classe.
-
-<details>
-<summary><strong>Se você usa MacOS</strong></summary>
-  
-  Esse requisito pode dar um falso positivo! Garanta que o nome do arquivo está em `PascalCase`. O avaliador, que roda em Linux, é case-sensitive para arquivos, enquanto o MacOS, entre outros sistemas, são case-insensitive. Ou seja: na sua máquina pode rodar, e no avaliador não, então fique de olho! Caso queria se aprofundar nesse assunto, veja o seguinte [link](https://books.google.com.br/books?id=FZcQAwAAQBAJ&pg=PA14&lpg=PA14&dq=node+case+sensitive+different+operating+system&source=bl&ots=PaRv2bqgWT&sig=ACfU3U3ZC8ymhOKAXs0ERdX4FTfTBlc-IQ&hl=pt-BR&sa=X&ved=2ahUKEwiZiqK51oj6AhWXArkGHUSKDWUQ6AF6BAgrEAM#v=onepage&q=node%20case%20sensitive%20different%20operating%20system&f=false). 
-</details>
-
-
-<details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * **[Será validado que existe o arquivo 'PostCategory.js']**
-
-  * **[Será validado que o modelo possui o nome 'PostCategory']**
-
-  * **[Será validado que o modelo possui a propriedade 'post_id']**
-
-  * **[Será validado que o modelo possui a propriedade 'category_id']**
-
-  * **[Será validado que o modelo em 'PostCategory.js', através do(s) modelos(s) de nome(s) 'Category; BlogPost', define a associação 'belongsToMany' respectivamente, com o(s) modelo(s) de nome(s) 'BlogPost, Category']**
-
-<br />
-</details>
-
----
-
-## 12 - Sua aplicação deve ter o endpoint POST `/post`
-
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post`;
-- O endpoint deve ser capaz de adicionar um novo blog post e vinculá-lo às categorias em suas tabelas no banco de dados;
+- É feita a validação do token para esta rota;
+- O endpoint é através do URL `/post`;
+- O endpoint é capaz de adicionar um novo blog post e vinculá-lo às categorias em suas tabelas no banco de dados;
 - O corpo da requisição deverá seguir o formato abaixo:
   ```json
   {
@@ -1000,17 +376,9 @@ JWT_SECRET=suaSenhaSecreta
     "categoryIds": [1, 2]
   }
   ```
-  
-
-- **✨ Dicas:**
-  - Explore outros [find na documentação do Sequelize](https://sequelize.org/docs/v6/core-concepts/model-querying-finders/#findandcountall);
-  - Explore outros [insert na documentação do Sequelize](https://sequelize.org/docs/v6/core-concepts/model-querying-basics/#creating-in-bulk);
-  - Explore a seção [Transações do dia 24.2 no course](https://app.betrybe.com/course/back-end/nodejs-orm-autenticacao/orm-associations/043e2e8a-c28e-4b95-a949-b7c43221ca8d/conteudos/5a2fce85-9b17-4061-8859-47da08ed1155/transacoes/e0bbdd2e-97ea-4a9d-8f90-4feab0e5657d?use_case=side_bar), essa seção vai deixar suas aplicações com mais confiablidade e atomicidade, quando o assunto for transações de banco de dados;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que não é possível cadastrar sem todos os campos preenchidos]**
     - Se a requisição não tiver todos os campos devidamente preenchidos(não pode haver campos em branco), o resultado retornado deverá ser conforme exibido abaixo, com um status http `400`:
@@ -1046,16 +414,14 @@ JWT_SECRET=suaSenhaSecreta
 
 ---
 
-## 13 - Sua aplicação deve ter o endpoint GET `/post`
+## 10 - A aplicação possui o endpoint GET `/post`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post`;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/post`;
 - O endpoint deve ser capaz de trazer todos os blogs post, user dono dele e as categorias do banco de dados;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que é possível listar blogpost com sucesso]**
     - Ao listar posts com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
@@ -1091,16 +457,14 @@ JWT_SECRET=suaSenhaSecreta
 
 ---
 
-## 14 - Sua aplicação deve ter o endpoint GET `/post/:id`
+## 11 - A aplicação possui o endpoint GET `/post/:id`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post/:id`;
-- O endpoint deve ser capaz de trazer o blog post baseado no `id` do banco de dados se ele existir;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/post/:id`;
+- O endpoint é capaz de trazer o blog post baseado no `id` do banco de dados se ele existir;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que é possível listar um blogpost com sucesso]**
     - Ao listar um post com sucesso o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
@@ -1140,14 +504,14 @@ JWT_SECRET=suaSenhaSecreta
 
 ---
 
-## 15 - Sua aplicação deve ter o endpoint PUT `/post/:id`
+## 12 - A aplicação possui o endpoint PUT `/post/:id`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post/:id`;
-- O endpoint deve ser capaz de alterar um post do banco de dados, se ele existir;
-- Sua aplicação só deve permitir a alteração de um blog post caso a pessoa seja dona dele;
-- Sua aplicação não deve permitir a alteração das categorias do post, somente os atributos `title` e `content` podem ser alterados;
-- O corpo da requisição deverá seguir o formato abaixo:
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/post/:id`;
+- O endpoint é capaz de alterar um post do banco de dados, se ele existir;
+- A aplicação só permite a alteração de um blog post caso a pessoa seja dona dele;
+- A aplicação não permite a alteração das categorias do post, somente os atributos `title` e `content` podem ser alterados;
+- O corpo da requisição segue o formato abaixo:
   ```json
   {
     "title": "Latest updates, August 1st",
@@ -1157,7 +521,7 @@ JWT_SECRET=suaSenhaSecreta
   
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
 
@@ -1211,19 +575,15 @@ JWT_SECRET=suaSenhaSecreta
 
 ---
 
-# Requisitos Bônus
+## 13 - A aplicação possui o endpoint DELETE `/post/:id`
 
-## 16 - Sua aplicação deve ter o endpoint DELETE `/post/:id`
-
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post/:id`;
-- O endpoint deve ser capaz de deletar um blog post baseado no `id` do banco de dados se ele existir;
-- Sua aplicação só deve permitir a deleção de um blog post caso a pessoa seja dona dele;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/post/:id`;
+- O endpoint é capaz de deletar um blog post baseado no `id` do banco de dados se ele existir;
+- A aplicação só permite a deleção de um blog post caso a pessoa seja dona dele;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que não é possível deletar um blogpost com outro usuário]**
     - Somente o user que criou o blog post poderá deletá-lo, o resultado retornado deverá ser conforme exibido abaixo, com um status http `401`
@@ -1249,17 +609,15 @@ JWT_SECRET=suaSenhaSecreta
 
 ---
 
-## 17 - Sua aplicação deve ter o endpoint DELETE `/user/me`
+## 14 - A aplicação possui o endpoint DELETE `/user/me`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/user/me`;
-- O endpoint deve ser capaz de deletar você do banco de dados, baseado no `id` que esta dentro do seu `token`;
-- Sua aplicação deve ser capaz de utilizar o token de autenticação nos headers, para saber o user logado correspondente á ser apagado;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/user/me`;
+- O endpoint é capaz de deletar você do banco de dados, baseado no `id` que esta dentro do seu `token`;
+- Aa aplicação deve ser capaz de utilizar o token de autenticação nos headers, para saber o user logado correspondente á ser apagado;
 
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que é possível excluir meu usuário com sucesso]**
     - Se o user for deletado com sucesso não deve ser retornada nenhuma resposta, apenas um status http `204`:
@@ -1269,25 +627,20 @@ JWT_SECRET=suaSenhaSecreta
 
 ---
 
-## 18 - Sua aplicação deve ter o endpoint GET `/post/search?q=:searchTerm`
+## 15 - A aplicação possui o endpoint GET `/post/search?q=:searchTerm`
 
-- ☝ Não esqueça de validar o `token` neste requisito, como descrito na seção de [Validando token nas requisições](#validandoToken);
-- O endpoint deve ser acessível através do URL `/post/search`;
-- O endpoint deve ser capaz de trazer os blogs post baseados no `q` do banco de dados, se ele existir;
-- Sua aplicação deve ser capaz de retornar um array de blogs post que contenham em seu título ou conteúdo o termo passado na URL;
-- Sua aplicação deve ser capaz de retornar um array vázio caso nenhum blog post satisfaça a busca;
+- É feita a validação do token para esta rota;
+- O endpoint é acessível através do URL `/post/search`;
+- O endpoint é capaz de trazer os blogs post baseados no `q` do banco de dados, se ele existir;
+- A aplicação é capaz de retornar um array de blogs post que contenham em seu título ou conteúdo o termo passado na URL;
+- A aplicação é capaz de retornar um array vázio caso nenhum blog post satisfaça a busca;
 - O query params da requisição deverá seguir o formato abaixo:
   ```js
     http://localhost:PORT/post/search?q=vamos
   ```
 
-- **✨ Dica:**
-  - Explore como fazer LIKE no Sequelize igual aprendemos no [dia 20.3 - Pesquisas mais dinâmicas e maleáveis com LIKE do course](https://app.betrybe.com/course/back-end/introducao-a-sql/filtrando-dados-de-forma-especifica/9464be4d-cfd8-4fd0-9b31-f037b3c62bff/conteudos/8ab54a4e-f823-4998-a267-297ff542de96/como-criar-pesquisas-mais-dinamicas-e-maleaveis-usando-o-like/1aee7e62-e43f-4a51-ad03-d064dcc68aed?use_case=side_bar);
-
 <details>
-  <summary><strong>Os seguintes pontos serão avaliados</strong></summary>
-
-  * ☝ **[Será validado o token, como descrito na seção de [Validando token nas requisições](#validandoToken)]**
+  <summary><strong>Validações para este endpoint:</strong></summary>
 
   * **[Será validado que é possível buscar um blogpost pelo `title`]**
     - Se a buscar for pelo `title` o resultado retornado deverá ser conforme exibido abaixo, com um status http `200`:
@@ -1385,5 +738,26 @@ JWT_SECRET=suaSenhaSecreta
 
       []
     ```
-
 </details>
+
+<h2 id="tecnologias-utilizadas">Tecnologias utilizadas</h2>
+
+* `Javascript`
+* `NodeJs`
+* `JWT (JSON Web Token) `
+* `MySql`
+* `ORM sequelize`
+* `Express`
+* `Docker`
+* `Arquitetura de software - MSC`
+
+
+<h2 id="pessoas-envolvidas">Desenvolvedores e demais contribuidores</h2>
+
+* <strong>Jenifer Gonçalves</strong> - Desenvolvedora Web;
+* <strong>Trybe - Escola de ensino de programação</strong>;
+
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>Programação exige conhecimento contínuo, foi um grande desafio, porém, muito satisfatório todo o desenvolvimento deste projeto, em tudo o que fazemos, aprendemos algo novo. A aplicação foi feita com muito amor e dedicação, além de reforçar que existem conhecimentos que não são ensinados na sala de aula, mas adquiridos através da experiência e da vivência. </p>
