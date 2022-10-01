@@ -13,6 +13,11 @@
 <h2 id="intro">Introdução</h2>
 <p>
 Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento do projeto seguindo arquitetura de software chamado de modelo baseado em camadas o qual irá possuir três camadas denominadas de Model, Service e Controller. Além do uso de JWT (JSON Web Token), para autenticação e autorização de usuário. Está detalhado cada rota criada, autenticações e validações de regras de negócio.
+  
+`Importe as requisições automáticamente aqui:`
+  <br/>
+ <br/>
+ [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Blog%20APIS&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fjenifergs%2Fblogs-api%2Fmain%2Finsomnia%2Frequisi%25C3%25A7%25C3%25B5es-blog-apis.json)
 </p>
 <br />
 
