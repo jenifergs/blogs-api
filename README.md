@@ -414,7 +414,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 10 - Sua aplicação deve ter o endpoint GET `/post`
+## 10 - A aplicação possui o endpoint GET `/post`
 
 - É feita a validação do token para esta rota;
 - O endpoint é acessível através do URL `/post`;
@@ -457,7 +457,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 11 - Sua aplicação deve ter o endpoint GET `/post/:id`
+## 11 - A aplicação possui o endpoint GET `/post/:id`
 
 - É feita a validação do token para esta rota;
 - O endpoint é acessível através do URL `/post/:id`;
@@ -504,7 +504,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 12 - Sua aplicação deve ter o endpoint PUT `/post/:id`
+## 12 - A aplicação possui o endpoint PUT `/post/:id`
 
 - É feita a validação do token para esta rota;
 - O endpoint é acessível através do URL `/post/:id`;
@@ -575,7 +575,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 13 - Sua aplicação deve ter o endpoint DELETE `/post/:id`
+## 13 - A aplicação possui o endpoint DELETE `/post/:id`
 
 - É feita a validação do token para esta rota;
 - O endpoint é acessível através do URL `/post/:id`;
@@ -609,7 +609,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 14 - Sua aplicação deve ter o endpoint DELETE `/user/me`
+## 14 - A aplicação possui o endpoint DELETE `/user/me`
 
 - É feita a validação do token para esta rota;
 - O endpoint é acessível através do URL `/user/me`;
@@ -627,7 +627,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 
 ---
 
-## 15 - Sua aplicação deve ter o endpoint GET `/post/search?q=:searchTerm`
+## 15 - A aplicação possui o endpoint GET `/post/search?q=:searchTerm`
 
 - É feita a validação do token para esta rota;
 - O endpoint é acessível através do URL `/post/search`;
