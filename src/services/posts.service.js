@@ -5,7 +5,6 @@ const { PostCategory } = require('../models');
 const { User } = require('../models');
 
 const newPost = async (title, content, categoryIds, userId) => {
-console.log(userId);
 const post = await BlogPost.create({ title, content, userId });
 await Promise.all(categoryIds.map(async (categoryI) => {
 const category = await Category.findByPk(categoryI);

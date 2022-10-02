@@ -4,6 +4,7 @@ const { validationToken } = require('../middlewares/tokenValidation');
 const { postsValidation } = require('../middlewares/postsValidation');
 
 const router = express.Router();
+
 router.post('/', postsValidation, validationToken, postController.createPost);
 
 router.get('/', validationToken, postController.getAllPosts);

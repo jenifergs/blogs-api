@@ -3,8 +3,7 @@ const services = require('../services/posts.service');
 const createPost = async (req, res) => {
 const { title, content, categoryIds } = req.body;
 const { id } = req.user.dataValues;
-console.log(id);
-console.log(req.user);
+
 try {
     const post = await services.newPost(title, content, categoryIds, id);
 return res.status(201).json(post);

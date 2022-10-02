@@ -2,7 +2,7 @@ const { User } = require('../models');
 
 const validationDisplayName = (req, res, next) => {
     const { displayName } = req.body;
-    console.log(req.body);
+
     if (!displayName || displayName.length < 8) {
      return res.status(400)
      .json({ message: '"displayName" length must be at least 8 characters long' });
@@ -12,7 +12,6 @@ const validationDisplayName = (req, res, next) => {
 
 const validationEmail = (req, res, next) => {
     const { email } = req.body;
-    console.log(email);
     const regex = /^[a-zA-Z0-9_.+]*[a-zA-Z][a-zA-Z0-9_.+]*@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     const emailValid = regex.test(email);
     if (!emailValid) {
