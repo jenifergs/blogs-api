@@ -4,9 +4,9 @@
 
 * [Introdução](#intro)
 * [Sobre o desenvolvimento](#sobre)
+* [Tecnologias utilizadas](#tecnologias-utilizadas)
 * [Diagrama ER e Entidades](#diagrama)
 * [O que foi desenvolvido](#desen)
-* [Tecnologias utilizadas](#tecnologias-utilizadas)
 * [Desenvolvedores e demais contribuidores](#pessoas-envolvidas)
 * [Conclusão](#conclusão)
 
@@ -20,6 +20,17 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
  [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Blog%20APIS&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fjenifergs%2Fblogs-api%2Fmain%2Finsomnia%2Frequisi%25C3%25A7%25C3%25B5es-blog-apis.json)
 </p>
 <br />
+
+<h2 id="tecnologias-utilizadas">Tecnologias utilizadas</h2>
+
+* `Javascript`
+* `NodeJs`
+* `JWT (JSON Web Token) `
+* `MySql`
+* `ORM sequelize`
+* `Express`
+* `Docker`
+* `Arquitetura de software - MSC`
 
 <details id="sobre">
   <summary><strong>👨‍💻 Sobre o desenvolvimento</strong></summary>
@@ -745,16 +756,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
     ```
 </details>
 
-<h2 id="tecnologias-utilizadas">Tecnologias utilizadas</h2>
 
-* `Javascript`
-* `NodeJs`
-* `JWT (JSON Web Token) `
-* `MySql`
-* `ORM sequelize`
-* `Express`
-* `Docker`
-* `Arquitetura de software - MSC`
 
 
 <h2 id="pessoas-envolvidas">Desenvolvedores e demais contribuidores</h2>
