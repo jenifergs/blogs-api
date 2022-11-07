@@ -762,7 +762,7 @@ Aqui você vai encontrar os detalhes de como foi estruturado o desenvolvimento d
 <h2 id="pessoas-envolvidas">Desenvolvedores e demais contribuidores</h2>
 
 * <strong>Jenifer Gonçalves</strong> - Desenvolvedora Web;
-* <strong>Trybe</strong> - Escola de ensino de programação (Onde foi aplicado e testado este projeto);
+* <strong>Trybe</strong> - Escola de ensino de programação (Que forneceu o repositório e testou os requisitos desenvolvidos por mim);
 
 
 <h2 id="conclusão">Conclusão</h2>
